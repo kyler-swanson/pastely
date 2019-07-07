@@ -1,0 +1,12 @@
+# Misc
+.env
+.DS_Store
+npm-debug.log*
+
+# API
+api/node_modules/
+
+# App
+app/node_modules/
+app/coverage/
+app/build/

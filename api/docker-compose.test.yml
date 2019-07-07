@@ -1,0 +1,23 @@
+version: '3'
+services:
+  api:
+    tty: true
+    build: .
+    volumes:
+      - .:/usr/src/api
+      - /usr/src/api/node_modules
+    ports:
+      - ${API_PORT}:${API_PORT}
+    depends_on:
+      - db
+    env_file:
+      - ../.env
+    environment:
+      NODE_ENV: test
+    command: ["node_modules/mocha/bin/mocha"]
+  db:
+    image: mongo
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    env_file:
+      - ../.env

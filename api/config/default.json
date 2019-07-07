@@ -1,0 +1,4 @@
+{
+    "API_PORT": 4200,
+    "MONGODB_URL": "mongodb://db:27017/pastely-dev"
+}

@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build: ./app
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    restart: always
+    depends_on:
+      - api
+    tty: true
+  api:
+    build: ./api
+    volumes:
+      - ./api:/usr/src/api
+      - /usr/src/api/node_modules
+    ports:
+      - ${API_PORT}:${API_PORT}
+    restart: always
+    depends_on:
+      - db
+    tty: true
+  db:
+    image: mongo
+    ports:
+      - ${DB_PORT}:${DB_PORT}
