@@ -1,14 +1,15 @@
 {
   "name": "api",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "pastely-api",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/index.js",
-    "test": "NODE_ENV=test mocha --timeout 15000",
-    "start": "NODE_ENV=production node src/index.js"
+    "dev": "NODE_ENV=dev nodemon --exec babel-node src/index.js",
+    "test": "NODE_ENV=test mocha",
+    "start": "NODE_ENV=production node src/index.js",
+    "babel-node": "babel-node"
   },
-  "author": "",
+  "author": "kyler-swanson",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -19,6 +20,10 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^6.1.4"

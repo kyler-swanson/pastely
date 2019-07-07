@@ -12,7 +12,7 @@ services:
       - api
     environment:
       NODE_ENV: ${ENV}
-    tty: true
+    tty: false
   api:
     build: ./api
     volumes:

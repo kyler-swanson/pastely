@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 4200
 
 # Run process
-CMD ["nodemon", "src/index.js"]
+CMD ["nodemon", "--exec", "npm", "run", "babel-node", "--", "src/index.js"]
