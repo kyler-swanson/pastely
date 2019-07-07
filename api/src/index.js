@@ -1,11 +1,11 @@
-var express = require('express');
+import express from 'express';
 
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const config = require('config');
-const routes = require('./routes/routes.js');
-const mongoose = require('mongoose');
+import cors from 'cors';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import config from 'config';
+import routes from './routes/routes';
+import mongoose from 'mongoose';
 
 var app = express();
 const port = config.get('API_PORT') || 4200;

@@ -14,7 +14,7 @@ services:
       - ../.env
     environment:
       NODE_ENV: test
-    command: ["node_modules/mocha/bin/mocha"]
+    command: ["node_modules/mocha/bin/mocha", "--require", "@babel/register"]
   db:
     image: mongo
     ports:
