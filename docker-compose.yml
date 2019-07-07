@@ -10,6 +10,8 @@ services:
     restart: always
     depends_on:
       - api
+    environment:
+      NODE_ENV: ${ENV}
     tty: true
   api:
     build: ./api
@@ -21,6 +23,8 @@ services:
     restart: always
     depends_on:
       - db
+    environment:
+      NODE_ENV: ${ENV}
     tty: true
   db:
     image: mongo
