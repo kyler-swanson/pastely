@@ -28,5 +28,6 @@ services:
     tty: true
   db:
     image: mongo
+    restart: always
     ports:
       - ${DB_PORT}:${DB_PORT}
