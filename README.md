@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/kyler-swanson/pastely.svg?branch=master)](https://travis-ci.org/kyler-swanson/pastely)
 
-Do you ever wonder how your data is treated when using services such as PasteBin or HasteBin? Scared about a potential data breach? Look no further. Pastely is a self-hosted pasting platform which allows peace of mind when sharing code snippets, logs, or BTC private keys (eh, still don't do this).
+Do you ever wonder how your data is treated when using services such as PasteBin or HasteBin? Scared about a potential data breach? Look no further. Pastely is a self-hosted pasting platform which allows peace of mind when sharing code snippets, logs, or BTC private keys (i take no responsibility).
 
 ## Requirements
 
