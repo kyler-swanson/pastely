@@ -1,19 +1,13 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
 
-const app = require('../src/index.js');
+import app from '../src/index';
 
 // Chai config
 chai.use(chaiHttp);
 chai.should();
 
-before(done => {
-  app.on('APP_STARTED', () => {
-    done();
-  })
-})
-
-describe('Startup Test', () => {
+describe('Startup test', () => {
   it('tests api base endpoint', done => {
     chai.request(app)
       .get('/api')
