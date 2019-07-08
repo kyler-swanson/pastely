@@ -33,7 +33,11 @@ app.use((req, res) => {
 })
 
 // Connect to MongoDB
-mongoose.connect(config.get('MONGODB_URL'), { useNewUrlParser: true }).then(
+mongoose.connect(config.get('MONGODB_URL'), {
+        useNewUrlParser: true,
+        'useFindAndModify': false,
+        'useCreateIndex': true
+    }).then(
     () => {
         app.listen(port, function () {
             console.log('Pastely - API has started');

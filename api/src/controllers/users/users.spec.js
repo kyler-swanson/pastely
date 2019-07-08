@@ -15,13 +15,13 @@ describe('/users', () => {
 
     // Empty users collection before each test
     beforeEach((done) => {
-        User.remove({}, (err) => {
+        User.deleteMany({}, (err) => {
             done();
         });
     });
 
     describe('[GET] /users should pass', () => {
-        it('returns registered users', done => {
+        it('should return registered users', done => {
             chai.request(app)
                 .get('/api/users')
                 .end((err, res) => {
