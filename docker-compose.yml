@@ -25,6 +25,7 @@ services:
       - db
     environment:
       NODE_ENV: ${ENV}
+      SECRET_KEY: ${SECRET_KEY_API}
     tty: true
   db:
     image: mongo

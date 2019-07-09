@@ -12,7 +12,10 @@ COPY package.json ./
 COPY package-lock.json ./
 
 # Install npm dependencies
-RUN npm install
+RUN apk --no-cache add --virtual builds-deps build-base python && \
+    npm install --quiet node-gyp -g && \
+    npm install && \
+    npm rebuild bcrypt --build-from-source
 
 # Copy app source code
 COPY . .

@@ -8,4 +8,7 @@ router.get('/', (req, res, next) => {
 import users from '../controllers/users/users.routing';
 router.use('/users', users);
 
+import user from '../controllers/user/user.routing';
+router.use('/user', user);
+
 module.exports = router;
