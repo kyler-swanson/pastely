@@ -6,6 +6,9 @@ import app from '../../index';
 
 import User from '../../models/User.model';
 
+// Fixtures
+import { goodUser, badUser } from '../../../test/fixtures/user';
+
 // Chai config
 chai.use(chaiHttp);
 chai.should();
@@ -13,17 +16,6 @@ chai.should();
 describe('/user', () => {
 
   let currentRes;
-
-  let testData = {
-    username: 'test-account-42122',
-    email: 'testing-woohoo@example.com',
-    password: 'very-secure-password'
-  };
-
-  let testDataBad = {
-    username: 'test-account-42122',
-    email: 'testing-woohoo@example.com'
-  };
 
   before(function (done) {
     app.on("API_STARTED", function () {
@@ -43,14 +35,14 @@ describe('/user', () => {
       it('should return user object', done => {
         chai.request(app)
           .post('/api/user/create')
-          .send(testData)
+          .send(goodUser)
           .end((err, res) => {
             currentRes = res;
             if (err) return done(err);
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.status.should.equal('success');
-            res.body.user.username.should.equal(testData.username);
+            res.body.user.username.should.equal(goodUser.username);
             done();
           });
       });
@@ -60,7 +52,7 @@ describe('/user', () => {
       it('should return status error', done => {
         chai.request(app)
           .post('/api/user/create')
-          .send(testDataBad)
+          .send(badUser)
           .end((err, res) => {
             currentRes = res;
             if (err) return done(err);
@@ -76,11 +68,11 @@ describe('/user', () => {
   describe('/user/auth', () => {
     describe('[POST] /user/auth should pass', () => {
       it('should return user object and jwt token', done => {
-        let testUser = new User(testData);
+        let testUser = new User(goodUser);
         testUser.save((err, user) => {
           chai.request(app)
             .post('/api/user/auth')
-            .send(testData)
+            .send(goodUser)
             .end((err, res) => {
               currentRes = res;
               if (err) return done(err);
