@@ -1,5 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import { withLogin } from '../../../test/util';
 
 import app from '../../index';
 
@@ -9,9 +10,14 @@ import User from '../../models/User.model';
 chai.use(chaiHttp);
 chai.should();
 
+let token;
+
 describe('/users', () => {
 
-    // TODO: beforeAll hook to login with jwt token
+    before((done) => {
+        token = withLogin();
+        done();
+    });
 
     // Empty users collection before each test
     beforeEach((done) => {
@@ -24,6 +30,7 @@ describe('/users', () => {
         it('should return registered users', done => {
             chai.request(app)
                 .get('/api/users')
+                .set('x-access-token', token)
                 .end((err, res) => {
                     if (err) return JSON.stringify(res);
                     res.should.have.status(200);
